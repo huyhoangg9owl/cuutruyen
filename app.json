@@ -1,0 +1,42 @@
+{
+	"expo": {
+		"name": "Cứu Truyện",
+		"slug": "cuutruyen",
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"icon": "./assets/images/icon.png",
+		"scheme": "myapp",
+		"userInterfaceStyle": "automatic",
+		"platforms": ["ios", "android"],
+		"splash": {
+			"image": "./assets/images/splash.png",
+			"resizeMode": "contain",
+			"backgroundColor": "#36393f"
+		},
+		"assetBundlePatterns": ["**/*"],
+		
+		"ios": {
+			"supportsTablet": true
+		},
+		"android": {
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/images/adaptive-icon.png",
+				"backgroundColor": "#36393f"
+			},
+			"package": "org.cuudev.cuutruyen"
+		},
+		"plugins": ["expo-router", "expo-secure-store"],
+		"experiments": {
+			"typedRoutes": true
+		},
+		"extra": {
+			"router": {
+				"origin": false
+			},
+			"eas": {
+				"projectId": "6fb6c503-15bb-4b7c-a0c7-d676a871b6bd"
+			}
+		},
+		"owner": "9owl"
+	}
+}
