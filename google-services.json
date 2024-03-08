@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "133424358175",
+    "project_id": "cuutruyen",
+    "storage_bucket": "cuutruyen.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:133424358175:android:a52ea31a88a4d50a66462a",
+        "android_client_info": {
+          "package_name": "org.cuudev.cuutruyen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBukUhX7VJoCRcxiq3lC1ZJxkGJrdYBsVk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

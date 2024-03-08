@@ -1,31 +1,16 @@
-import { StyleSheet } from "react-native";
+import MusicSetting from "@/components/Setting/Music";
+import UIProviders from "@/components/UIProviders";
+import AuthStore from "@/store/Auth";
+import { Redirect } from "expo-router";
+import { Button } from "react-native";
 
-import EditScreenInfo from "@/components/EditScreenInfo";
-import { Text, View } from "@/components/Themed";
-
-export default function AccountScreen() {
+export default function SettingScreen() {
+	const { logout, user_id } = AuthStore();
+	if (!user_id) return <Redirect href="/auth" />;
 	return (
-		<View style={styles.container}>
-			<Text style={styles.title}>Tab Two</Text>
-			<View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-			<EditScreenInfo path="app/(tabs)/two.tsx" />
-		</View>
+		<UIProviders className="p-4">
+			<MusicSetting />
+			<Button title="Đăng xuất" onPress={logout} color="coral" />
+		</UIProviders>
 	);
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		alignItems: "center",
-		justifyContent: "center"
-	},
-	title: {
-		fontSize: 20,
-		fontWeight: "bold"
-	},
-	separator: {
-		marginVertical: 30,
-		height: 1,
-		width: "80%"
-	}
-});

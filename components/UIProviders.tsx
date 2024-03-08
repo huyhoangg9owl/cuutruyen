@@ -1,46 +1,59 @@
 import { ReactNode, useCallback, useState } from "react";
-import { RefreshControl, ScrollView } from "react-native";
+import { Dimensions, RefreshControl, ScrollView } from "react-native";
 import AnimatedSplashScreen from "./AnimatedSplashScreen";
 import { View } from "./Themed";
+
+const { height: HUI } = Dimensions.get("screen");
 
 export default function UIProviders({
 	children,
 	loading = false,
 	func,
 	className = "",
-	hasscrollView = true
+	hasScrollView = true
 }: {
 	children: ReactNode;
 	loading?: boolean;
 	func?: () => Promise<any>;
 	className?: string;
-	hasscrollView?: boolean;
+	hasScrollView?: boolean;
 }) {
 	const [refreshing, setRefreshing] = useState(false);
-	const onRefresh = useCallback(() => {
+	const onRefresh = useCallback(async () => {
+		console.info("Start refreshing");
+
 		setRefreshing(true);
-		if (!func) return setRefreshing(false);
-		func()
-			.then(() => setRefreshing(false))
-			.catch(() => {
-				setRefreshing(false);
-				throw new Error("Failed to fetch");
-			});
+		if (!func) setRefreshing(false);
+		else {
+			try {
+				await func();
+			} catch (error) {
+				console.error("Failed to fetch");
+			}
+		}
+		setRefreshing(false);
+		console.info("End refreshing");
 	}, []);
 
 	if (loading || refreshing) return <AnimatedSplashScreen />;
 
-	if (!hasscrollView) return <View className={className}>{children}</View>;
+	if (!hasScrollView)
+		return (
+			<View className={"min-h-full w-full" + className} style={{ flex: 1 }}>
+				{children}
+			</View>
+		);
 
 	return (
 		<ScrollView
 			automaticallyAdjustKeyboardInsets
 			contentInsetAdjustmentBehavior="automatic"
 			className="min-h-full w-full"
-			style={{ flex: 1 }}
+			showsHorizontalScrollIndicator={false}
+			showsVerticalScrollIndicator={false}
 			refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
 		>
-			<View className={className} style={{ flex: 1, minHeight: "100%" }}>
+			<View className={className} style={{ flex: 1, minHeight: HUI }}>
 				{children}
 			</View>
 		</ScrollView>

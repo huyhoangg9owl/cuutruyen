@@ -1,4 +1,4 @@
-import { LOGIN } from "@/api/auth";
+import { LOGIN } from "@/api/user/auth";
 import { MonoText, Text, View } from "@/components/Themed";
 import AuthStore from "@/store/Auth";
 import MaskedView from "@react-native-masked-view/masked-view";
@@ -50,7 +50,8 @@ export default function LoginAuthUI() {
 		setError(null);
 		const query = await refetch();
 		const { data, status } = query;
-		if (!query || status === "error" || !data) {
+
+		if (status === "error" || !data) {
 			setError("Lỗi không xác định! Chụp màn hình và gửi cho admin!" + JSON.stringify(query));
 			return null;
 		}
@@ -63,7 +64,7 @@ export default function LoginAuthUI() {
 
 	if (isFetching) return <Text>Loading...</Text>;
 
-	if (user_id) return <Redirect href="/account" />;
+	if (user_id) return <Redirect href="/account/" />;
 
 	return (
 		<Fragment>

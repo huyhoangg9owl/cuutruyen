@@ -10,6 +10,7 @@ export const ProfileQuery = (user_id: number) =>
 			name,
 			created_at,
 			updated_at,
+			noti_token,
 			avatar ( uri ),
 			rank ( rank_id ),
 			badge (
@@ -23,3 +24,5 @@ export const ProfileQuery = (user_id: number) =>
 
 export const BadgesQuery = (path_dir: Database["public"]["Tables"]["badges"]["Row"]["path_dir"]) =>
 	supabase.storage.from("badges").getPublicUrl(path_dir);
+
+export const SearchBadgeInfo = (badge_id: number) => supabase.from("badges").select("*").eq("id", badge_id).single();

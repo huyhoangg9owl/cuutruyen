@@ -14,19 +14,19 @@ export type Database = {
           created_at: string
           profile_id: number
           updated_at: string
-          uri: string
+          uri: string | null
         }
         Insert: {
           created_at?: string
           profile_id: number
           updated_at?: string
-          uri?: string
+          uri?: string | null
         }
         Update: {
           created_at?: string
           profile_id?: number
           updated_at?: string
-          uri?: string
+          uri?: string | null
         }
         Relationships: [
           {
@@ -73,16 +73,19 @@ export type Database = {
       }
       badges: {
         Row: {
+          desc: string
           id: number
           name: string
           path_dir: string
         }
         Insert: {
+          desc?: string
           id?: number
           name: string
           path_dir?: string
         }
         Update: {
+          desc?: string
           id?: number
           name?: string
           path_dir?: string
@@ -115,18 +118,21 @@ export type Database = {
           _id: number
           created_at: string
           name: string
+          noti_token: string
           updated_at: string
         }
         Insert: {
-          _id?: number
+          _id: number
           created_at?: string
-          name?: string
+          name: string
+          noti_token: string
           updated_at?: string
         }
         Update: {
           _id?: number
           created_at?: string
           name?: string
+          noti_token?: string
           updated_at?: string
         }
         Relationships: []

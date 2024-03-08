@@ -1,42 +1,84 @@
 {
-	"expo": {
-		"name": "Cứu Truyện",
-		"slug": "cuutruyen",
-		"version": "1.0.0",
-		"orientation": "portrait",
-		"icon": "./assets/images/icon.png",
-		"scheme": "myapp",
-		"userInterfaceStyle": "automatic",
-		"platforms": ["ios", "android"],
-		"splash": {
-			"image": "./assets/images/splash.png",
-			"resizeMode": "contain",
-			"backgroundColor": "#36393f"
-		},
-		"assetBundlePatterns": ["**/*"],
-		
-		"ios": {
-			"supportsTablet": true
-		},
-		"android": {
-			"adaptiveIcon": {
-				"foregroundImage": "./assets/images/adaptive-icon.png",
-				"backgroundColor": "#36393f"
-			},
-			"package": "org.cuudev.cuutruyen"
-		},
-		"plugins": ["expo-router", "expo-secure-store"],
-		"experiments": {
-			"typedRoutes": true
-		},
-		"extra": {
-			"router": {
-				"origin": false
-			},
-			"eas": {
-				"projectId": "6fb6c503-15bb-4b7c-a0c7-d676a871b6bd"
-			}
-		},
-		"owner": "9owl"
-	}
+  "expo": {
+    "name": "Cứu Truyện",
+    "slug": "cuutruyen",
+    "scheme": "cuutruyen",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "userInterfaceStyle": "automatic",
+    "platforms": [
+      "android"
+    ],
+    "notification": {
+      "icon": "./assets/images/icon.png",
+      "color": "#000000"
+    },
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#36393f"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#36393f"
+      },
+      "package": "org.cuudev.cuutruyen",
+      "permissions": [
+        "NOTIFICATIONS"
+      ],
+      "googleServicesFile": "./google-services.json"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/images/icon.png",
+          "color": "#000000",
+          "sounds": [
+            "./assets/sounds/notification.mp3"
+          ],
+          "iosDisplayInForeground": true,
+          "androidMode": "default",
+          "androidCollapsedTitle": "Cức Truyện",
+          "mode": "production"
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "extraMavenRepos": [
+              "../../node_modules/@notifee/react-native/android/libs"
+            ]
+          }
+        }
+      ],
+      "expo-font"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "6fb6c503-15bb-4b7c-a0c7-d676a871b6bd"
+      }
+    },
+    "owner": "9owl",
+    "ios": {
+      "bundleIdentifier": "org.cuudev.cuutruyen"
+    },
+    "packagerOpts": {
+      "url": "https://cuutruyen.net"
+    }
+  }
 }

@@ -1,6 +1,6 @@
 import MaskedView from "@react-native-masked-view/masked-view";
 import { LinearGradient } from "expo-linear-gradient";
-import React, { useState } from "react";
+import { useState } from "react";
 import {
 	ImageBackground,
 	Keyboard,
@@ -61,8 +61,15 @@ export default function AuthUI() {
 								>
 									Bạn {mode === "login" ? "chưa" : "đã"} có tài khoản ư?{" "}
 								</Text>
-								<MaskedView maskElement={<Text>Đăng {mode === "login" ? "ký" : "nhập"} ngay</Text>}>
-									<TouchableOpacity onPress={() => setMode(mode === "login" ? "register" : "login")}>
+								<MaskedView
+									className="relative"
+									maskElement={<Text>Đăng {mode === "login" ? "ký" : "nhập"} ngay</Text>}
+								>
+									<Text>Đăng {mode === "login" ? "ký" : "nhập"} ngay</Text>
+									<TouchableOpacity
+										className="absolute"
+										onPress={() => setMode(mode === "login" ? "register" : "login")}
+									>
 										<LinearGradient
 											colors={["#FF6C65", "#FF29DD"]}
 											start={{ x: 1, y: 1 }}
